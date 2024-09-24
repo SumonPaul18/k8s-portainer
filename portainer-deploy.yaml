@@ -19,6 +19,7 @@ metadata:
   name: portainer
   namespace: portainer1
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: portainer
