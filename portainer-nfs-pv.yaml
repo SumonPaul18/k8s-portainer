@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: portainer-nfs-pv
+  namespace: portainer1
 spec:
   capacity:
     storage: 1Gi
