@@ -30,14 +30,19 @@ Supported platforms:
 
 These deployment manifests will deploy Portainer inside the `portainer` namespace. Portainer uses this namespace to store system information, as such this namespace must not be changed.
 
-## Deploy Portainer inside your cluster and access it via an external load balancer
+## Deploy Portainer inside your cluster and access it via node port
 
-If your cloud provider supports external load balancers, you can use the following commands to deploy Portainer:
+You can use the following commands to deploy Portainer:
 
 ```
-curl -LO https://raw.githubusercontent.com/portainer/portainer-k8s/master/portainer.yaml
-kubectl apply -f portainer.yaml
+curl -LO https://github.com/SumonPaul18/k8s-portainer/blob/master/portainer-deploy.yaml
+
 ```
+```
+kubectl apply -f portainer-deploy.yaml
+```
+
+
 
 This will deploy the Portainer application and create an external load balancer which you'll be able to use to access Portainer on port 9000.
 
