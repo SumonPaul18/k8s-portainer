@@ -1,9 +1,3 @@
-# Important notice
-
-This repository has been archived.
-
-Portainer 2.0 includes support for Kubernetes, head to https://www.portainer.io/installation/ for more details about how to install it.
-
 # Portainer on Kubernetes
 
 These deployment manifests will deploy Portainer inside the `portainer` namespace. Portainer uses this namespace to store system information, as such this namespace must not be changed.
@@ -16,6 +10,13 @@ You can use the following commands to deploy Portainer:
 git clone https://github.com/SumonPaul18/k8s-portainer.git
 kubectl apply -f k8s-portainer/portainer-deploy.yaml
 kubectl apply -f k8s-portainer/portainer-nfs-pv-pvc.yaml
+```
+```
+kubectl get all -n portainer1
+```
+Delete NameSpace portainer1
+```
+kubectl delete ns portainer1
 ```
 
 This will deploy the Portainer application and create an external load balancer which you'll be able to use to access Portainer on port 9000.
@@ -66,3 +67,7 @@ kubectl apply -f agent/portainer-agent.yaml
 ```
 
 This will deploy the Portainer agent and create an external load balancer which you'll be able to use to connect to the agent on port 9001.
+
+# Reference
+
+Portainer 2.0 includes support for Kubernetes, head to https://www.portainer.io/installation/ for more details about how to install it.
