@@ -4,29 +4,7 @@ This repository has been archived.
 
 Portainer 2.0 includes support for Kubernetes, head to https://www.portainer.io/installation/ for more details about how to install it.
 
-# Portainer on Kubernetes BETA
-
-This repository contains all the manifests you can use to deploy the Portainer for Kubernetes BETA version.
-
-For any feedback regarding the BETA version, please head to the [portainer for Kubernetes BETA repository](https://github.com/portainer/kubernetes-beta).
-
-These manifests have been tested on:
-
-* Azure AKS
-* Digital Ocean
-* minikube
-* kind
-
-Have any feedback on the deployment of Portainer inside Kubernetes? Please head to the [deployment feedback topic](https://github.com/portainer/kubernetes-beta/issues/1).
-
-Supported platforms:
-
-* Linux amd64
-* Linux arm
-
-# Usage
-
-## Notice
+# Portainer on Kubernetes
 
 These deployment manifests will deploy Portainer inside the `portainer` namespace. Portainer uses this namespace to store system information, as such this namespace must not be changed.
 
@@ -35,15 +13,10 @@ These deployment manifests will deploy Portainer inside the `portainer` namespac
 You can use the following commands to deploy Portainer:
 
 ```
-curl -LO https://github.com/SumonPaul18/k8s-portainer/blob/master/portainer-deploy.yaml
-curl -LO https://github.com/SumonPaul18/k8s-portainer/blob/master/portainer-nfs-pvc.yaml
+git clone https://github.com/SumonPaul18/k8s-portainer.git
+kubectl apply -f k8s-portainer/portainer-deploy.yaml
+kubectl apply -f k8s-portainer/portainer-nfs-pv-pvc.yaml
 ```
-```
-kubectl apply -f portainer-nfs-pvc.yaml
-kubectl apply -f portainer-deploy.yaml
-```
-
-
 
 This will deploy the Portainer application and create an external load balancer which you'll be able to use to access Portainer on port 9000.
 
@@ -93,11 +66,3 @@ kubectl apply -f agent/portainer-agent.yaml
 ```
 
 This will deploy the Portainer agent and create an external load balancer which you'll be able to use to connect to the agent on port 9001.
-
-### Edge agent
-
-If you wish to deploy the Edge agent inside your Kubernetes cluster, it is recommended to follow the instructions available inside your Portainer instance.
-
-## ARM platform
-
-If you wish to deploy Portainer or the agent inside a Kubernetes cluster running on arm, please use the tag `linux-arm` instead of `linux-amd64`.
