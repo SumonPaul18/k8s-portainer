@@ -36,9 +36,10 @@ You can use the following commands to deploy Portainer:
 
 ```
 curl -LO https://github.com/SumonPaul18/k8s-portainer/blob/master/portainer-deploy.yaml
-
+curl -LO https://github.com/SumonPaul18/k8s-portainer/blob/master/portainer-nfs-pvc.yaml
 ```
 ```
+kubectl apply -f portainer-nfs-pvc.yaml
 kubectl apply -f portainer-deploy.yaml
 ```
 
