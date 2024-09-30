@@ -33,9 +33,23 @@ spec:
       - name: portainer
         image: portainer/portainer-ce:latest
         imagePullPolicy: Always
-        ports:
-        - containerPort: 9000
-          protocol: TCP
+        volumeMounts:
+            - name: portainer-data
+              mountPath: /data
+          ports:
+            - name: http
+              containerPort: 9000
+              protocol: TCP
+            - name: https
+              containerPort: 9443
+              protocol: TCP
+            - name: tcp-edge
+              containerPort: 8000
+              protocol: TCP
+      volumes:
+        - name: "portainer-data"
+          persistentVolumeClaim:
+            claimName: portainer-nfs-pvc
 
 ---
 
@@ -53,4 +67,14 @@ spec:
     protocol: TCP
     port: 9000
     targetPort: 9000
+    nodePort: 30776
+  - name: https
+    targetPort: 9443
+    protocol: TCP
+    port: 9443
     nodePort: 30777
+  - name: edge
+    protocol: TCP
+    port: 8000
+    targetPort: 8000
+    nodePort: 30778
